@@ -1,0 +1,19 @@
+{
+  "name": "daily-throwback",
+  "version": "0.1.0",
+  "description": "Show the same day from every earlier year at the top of a daily note.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs production",
+    "test": "node harness/smoke.cjs"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "obsidian": "latest",
+    "jsdom": "^24.0.0",
+    "moment": "^2.29.4"
+  }
+}

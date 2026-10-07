@@ -1,0 +1,86 @@
+/* Daily Throwback — only Obsidian's own variables, so light/dark themes and
+   snippets carry over. */
+
+.dt-root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-2);
+  margin: var(--size-4-1) 0;
+}
+
+.dt-hint {
+  color: var(--text-faint);
+  font-size: var(--font-ui-small);
+  padding: var(--size-4-1) 0;
+}
+
+.dt-card {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-secondary);
+  overflow: hidden;
+}
+
+.dt-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4-2);
+  min-height: 36px;
+  padding: 0 var(--size-4-2) 0 var(--size-4-3);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-size: var(--font-ui-medium);
+}
+.dt-summary::-webkit-details-marker { display: none; }
+.dt-summary:hover { background: var(--background-modifier-hover); }
+.is-mobile .dt-summary { min-height: 44px; }
+
+.dt-chevron {
+  display: flex;
+  color: var(--text-muted);
+  transition: transform 120ms ease;
+}
+.dt-chevron svg { width: var(--icon-s); height: var(--icon-s); }
+.dt-card[open] > .dt-summary .dt-chevron { transform: rotate(90deg); }
+
+.dt-date { font-weight: var(--font-semibold); color: var(--text-normal); }
+.dt-weekday { color: var(--text-muted); }
+.dt-ago {
+  color: var(--text-accent);
+  font-size: var(--font-ui-smaller);
+  padding: 1px var(--size-4-2);
+  border-radius: var(--radius-s);
+  background: var(--background-modifier-hover);
+}
+
+.dt-open {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--text-muted);
+}
+.is-mobile .dt-open { min-width: 44px; min-height: 44px; }
+
+/* In Live Preview, Obsidian puts its own "edit block" button in the top-right
+   corner of every rendered code block, right on top of the open button. The
+   block's source is one fixed line that never needs editing, so hide it here
+   only. (Arrow keys or Source mode still reach the source.) */
+.cm-embed-block:has(.block-language-on-this-day) .edit-block-button,
+.cm-embed-block:has(.block-language-往年今日) .edit-block-button { display: none; }
+
+/* A long entry scrolls inside its card instead of pushing today's writing
+   far down the page. */
+.dt-card-body {
+  border-top: 1px solid var(--background-modifier-border);
+  padding: var(--size-4-2) var(--size-4-4);
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--background-primary);
+}
+.dt-markdown > :first-child { margin-top: 0; }
+.dt-markdown > :last-child { margin-bottom: 0; }
+.dt-markdown img { max-width: 100%; }

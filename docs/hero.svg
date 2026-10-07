@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <style>
+    .bg     { fill: #fdfcfa; }
+    .panel  { fill: #f6f2ea; stroke: #e3ddd2; }
+    .page   { fill: #ffffff; stroke: #e3ddd2; }
+    .card   { fill: #f6f2ea; stroke: #e3ddd2; }
+    .cbody  { fill: #ffffff; stroke: #e3ddd2; }
+    .h      { fill: #2f2a24; font-weight: 700; }
+    .title  { fill: #2f2a24; font-weight: 600; }
+    .text   { fill: #2f2a24; }
+    .sub    { fill: #8b8177; }
+    .label  { fill: #a39a8f; font-weight: 600; letter-spacing: 1.2px; }
+    .head   { fill: #b7a587; font-weight: 700; }
+    .mono   { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #5b5248; }
+    .accent { fill: #8a7355; }
+    .acc-s  { stroke: #8a7355; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .chev   { stroke: #8b8177; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .pill   { fill: #efe9dd; }
+    .ago    { fill: #8a7355; font-weight: 600; }
+    .arrow  { stroke: #c9bda9; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .rule   { stroke: #e3ddd2; }
+    .photo  { fill: #e9e1d2; }
+    .sun    { fill: #d8c7a6; }
+    .hill   { fill: #cdbb98; }
+    .caret  { stroke: #8a7355; stroke-width: 2; }
+    .ok     { fill: #4b7a4e; }
+    .dot    { fill: #8a7355; }
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #1f1d1a; }
+      .panel { fill: #282521; stroke: #3a352f; }
+      .page  { fill: #24221f; stroke: #3a352f; }
+      .card  { fill: #2d2a25; stroke: #3d3832; }
+      .cbody { fill: #24221f; stroke: #3d3832; }
+      .h, .title, .text { fill: #ebe5da; }
+      .sub   { fill: #a39a8f; }
+      .label { fill: #7d756b; }
+      .head  { fill: #c9b48f; }
+      .mono  { fill: #cfc6b8; }
+      .accent{ fill: #c9ad80; }
+      .acc-s { stroke: #c9ad80; }
+      .chev  { stroke: #a39a8f; }
+      .pill  { fill: #3a342b; }
+      .ago   { fill: #c9ad80; }
+      .arrow { stroke: #5a5249; }
+      .rule  { stroke: #3a352f; }
+      .photo { fill: #3a342b; }
+      .sun   { fill: #6b5d45; }
+      .hill  { fill: #5a4d38; }
+      .caret { stroke: #c9ad80; }
+      .ok    { fill: #7fb07f; }
+      .dot   { fill: #c9ad80; }
+    }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1200" height="800"/>
+
+  <text class="h" x="56" y="62" font-size="30">Daily Throwback</text>
+  <text class="sub" x="56" y="92" font-size="16">The same day from every earlier year, folded at the top of today's daily note.</text>
+
+  <!-- left: what you write -->
+  <text class="label" x="56" y="146" font-size="12">WHAT YOU WRITE — ONCE, IN THE DAILY TEMPLATE</text>
+  <rect class="panel" x="56" y="160" width="380" height="300" rx="12"/>
+  <text class="sub" x="80" y="194" font-size="14">2026-10-07.md</text>
+  <line class="rule" x1="80" y1="208" x2="412" y2="208"/>
+  <text class="mono" x="80" y="244" font-size="16">## On this day</text>
+  <text class="mono" x="80" y="274" font-size="16"><tspan class="accent">```on-this-day</tspan></text>
+  <text class="mono" x="80" y="304" font-size="16"><tspan class="accent">```</tspan></text>
+  <text class="mono" x="80" y="350" font-size="16">## today</text>
+  <text class="mono" x="80" y="380" font-size="16">Bought chestnuts on the</text>
+  <text class="mono" x="80" y="406" font-size="16">way home…</text>
+  <text class="sub" x="80" y="440" font-size="13">The note only ever holds this one empty block.</text>
+
+  <!-- arrow -->
+  <path class="arrow" d="M 452 300 L 512 300"/>
+  <path class="arrow" d="M 500 288 L 514 300 L 500 312"/>
+
+  <!-- right: what you see -->
+  <text class="label" x="532" y="146" font-size="12">WHAT YOU SEE — DESKTOP AND MOBILE</text>
+  <rect class="page" x="532" y="160" width="612" height="448" rx="12"/>
+  <text class="title" x="560" y="204" font-size="22">2026-10-07</text>
+  <text class="head" x="560" y="246" font-size="19">On this day</text>
+
+  <!-- card 1, open -->
+  <rect class="card" x="560" y="262" width="556" height="190" rx="9"/>
+  <path class="chev" d="M 576 278 L 582 284 L 588 278" transform="translate(0,2)"/>
+  <text class="title" x="600" y="291" font-size="16">2025-10-07</text>
+  <text class="sub" x="696" y="291" font-size="15">Tue</text>
+  <rect class="pill" x="734" y="274" width="92" height="24" rx="6"/>
+  <text class="ago" x="746" y="291" font-size="13">1 year ago</text>
+  <path class="acc-s" d="M 1086 294 L 1098 282 M 1089 282 L 1098 282 L 1098 291"/>
+  <rect class="cbody" x="561" y="308" width="554" height="143" rx="0"/>
+  <text class="text" x="580" y="338" font-size="15">Hiked up to the reservoir with Mum. The maples had</text>
+  <text class="text" x="580" y="360" font-size="15">just started to turn.</text>
+  <rect class="photo" x="580" y="376" width="128" height="62" rx="6"/>
+  <circle class="sun" cx="682" cy="394" r="9"/>
+  <path class="hill" d="M 580 438 L 620 400 L 650 422 L 672 406 L 708 438 Z"/>
+  <text class="sub" x="726" y="412" font-size="13">Images, links and tags render as usual;</text>
+  <text class="sub" x="726" y="432" font-size="13">a long entry scrolls inside its card.</text>
+
+  <!-- card 2 -->
+  <rect class="card" x="560" y="464" width="556" height="40" rx="9"/>
+  <path class="chev" d="M 578 477 L 584 484 L 578 491"/>
+  <text class="title" x="600" y="490" font-size="16">2023-10-07</text>
+  <text class="sub" x="696" y="490" font-size="15">Sat</text>
+  <rect class="pill" x="734" y="472" width="100" height="24" rx="6"/>
+  <text class="ago" x="746" y="489" font-size="13">3 years ago</text>
+  <path class="acc-s" d="M 1086 492 L 1098 480 M 1089 480 L 1098 480 L 1098 489"/>
+
+  <!-- card 3 -->
+  <rect class="card" x="560" y="514" width="556" height="40" rx="9"/>
+  <path class="chev" d="M 578 527 L 584 534 L 578 541"/>
+  <text class="title" x="600" y="540" font-size="16">2019-10-07</text>
+  <text class="sub" x="696" y="540" font-size="15">Mon</text>
+  <rect class="pill" x="734" y="522" width="100" height="24" rx="6"/>
+  <text class="ago" x="746" y="539" font-size="13">7 years ago</text>
+  <path class="acc-s" d="M 1086 542 L 1098 530 M 1089 530 L 1098 530 L 1098 539"/>
+
+  <text class="head" x="560" y="578" font-size="17">today</text>
+  <line class="caret" x1="612" y1="563" x2="612" y2="582"/>
+
+  <!-- notes -->
+  <g font-size="15">
+    <circle class="dot" cx="64" cy="636" r="4"/>
+    <text class="title" x="80" y="641">Every earlier year, however far back.</text>
+    <text class="sub" x="80" y="663" font-size="14">2024 missing? It's skipped. Backfill an old entry</text>
+    <text class="sub" x="80" y="683" font-size="14">and it appears on its own — found by file name.</text>
+
+    <circle class="dot" cx="440" cy="636" r="4"/>
+    <text class="title" x="456" y="641">Folded, and read only when opened.</text>
+    <text class="sub" x="456" y="663" font-size="14">The block stays a few lines tall, so you keep</text>
+    <text class="sub" x="456" y="683" font-size="14">writing below it. Typing never makes it redraw.</text>
+
+    <circle class="dot" cx="816" cy="636" r="4"/>
+    <text class="title" x="832" y="641">Never edits your notes.</text>
+    <text class="sub" x="832" y="663" font-size="14">Cards are rendered on screen only. Old entries'</text>
+    <text class="sub" x="832" y="683" font-size="14">own blocks are left out, so cards never nest.</text>
+  </g>
+
+  <line class="rule" x1="56" y1="724" x2="1144" y2="724"/>
+  <text class="sub" x="56" y="756" font-size="13">Any note named like a date (YYYY-MM-DD by default) counts as a daily note, in any folder. A command inserts the block into existing notes.</text>
+</svg>
