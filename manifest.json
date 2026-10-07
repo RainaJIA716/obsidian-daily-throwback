@@ -1,7 +1,7 @@
 {
   "id": "daily-throwback",
   "name": "Daily Throwback",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "minAppVersion": "1.4.0",
   "description": "Show the same day from every earlier year at the top of a daily note, as folding cards with the full entry inside. Never edits your notes.",
   "author": "RainaJIA716",

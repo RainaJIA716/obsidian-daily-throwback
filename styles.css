@@ -68,9 +68,10 @@
 /* In Live Preview, Obsidian puts its own "edit block" button in the top-right
    corner of every rendered code block, right on top of the open button. The
    block's source is one fixed line that never needs editing, so hide it here
-   only. (Arrow keys or Source mode still reach the source.) */
-.cm-embed-block:has(.block-language-on-this-day) .edit-block-button,
-.cm-embed-block:has(.block-language-往年今日) .edit-block-button { display: none; }
+   only, through the language class Obsidian puts on the block's container.
+   (Arrow keys or Source mode still reach the source.) */
+.cm-preview-code-block.cm-lang-on-this-day .edit-block-button,
+.cm-preview-code-block.cm-lang-往年今日 .edit-block-button { display: none; }
 
 /* A long entry scrolls inside its card instead of pushing today's writing
    far down the page. */

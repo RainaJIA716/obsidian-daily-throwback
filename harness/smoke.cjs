@@ -104,7 +104,7 @@ require.cache["obsidian"] = {
 	id: "obsidian", filename: "obsidian", loaded: true,
 	exports: {
 		Plugin, Component, MarkdownRenderChild, MarkdownRenderer, PluginSettingTab, Setting, Notice, TFile,
-		Keymap: { isModEvent: () => false }, setIcon: () => {}, moment,
+		Keymap: { isModEvent: () => false }, setIcon: () => {}, moment, getLanguage: () => "en",
 	},
 };
 

@@ -1,5 +1,7 @@
 // Follows Obsidian's own interface language: Chinese when the app is in
-// Chinese, English everywhere else. We only read the setting, never write it.
+// Chinese, English everywhere else. getLanguage() exists from Obsidian 1.8.7;
+// before that, Obsidian sets moment's locale to the app language.
+const obsidian = require("obsidian");
 
 const STRINGS = {
 	en: {
@@ -41,11 +43,11 @@ const STRINGS = {
 function pickLocale() {
 	let lang = "en";
 	try {
-		lang = window.localStorage.getItem("language") || navigator.language || "en";
+		lang = typeof obsidian.getLanguage === "function" ? obsidian.getLanguage() : obsidian.moment.locale();
 	} catch (e) {
 		lang = "en";
 	}
-	return String(lang).toLowerCase().startsWith("zh") ? "zh" : "en";
+	return String(lang || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
 }
 
 const t = STRINGS[pickLocale()];
