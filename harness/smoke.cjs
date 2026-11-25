@@ -77,7 +77,13 @@ class Setting {
 }
 const notices = [];
 class Notice { constructor(m) { notices.push(m); } }
-class TFile { constructor(p) { this.path = p; this.basename = path.basename(p, ".md"); this.extension = "md"; } }
+class TFile {
+	constructor(p) {
+		this.path = p;
+		this.extension = path.extname(p).slice(1);
+		this.basename = path.basename(p, path.extname(p));
+	}
+}
 const renders = [];
 const MarkdownRenderer = {
 	async render(app, md, el, sourcePath, component) {
@@ -160,6 +166,7 @@ console.log("index.js");
 	check("weekly note 2026-01-W05 is not", p("a/2026-01-W05.md") === null);
 	check("clipping 20231101标题 is not", p("a/20231101网络冲浪.md") === null);
 	check("clipping 2025-05-06T172238 is not", p("a/2025-05-06T172238+0800  复盘.md") === null);
+	check("a date-named WebP is not a daily note", p("attachments/2025-10-07.webp") === null);
 	check("folder limit keeps notes inside", idx.parseDaily(new TFile("10-LIFE/x/2025-10-07.md"), { ...s, folder: "/10-LIFE/" }, moment) !== null);
 	check("folder limit drops notes outside", idx.parseDaily(new TFile("old/2019-10-07.md"), { ...s, folder: "10-LIFE" }, moment) === null);
 	check("folder limit does not match a prefix", idx.parseDaily(new TFile("10-LIFE-old/2019-10-07.md"), { ...s, folder: "10-LIFE" }, moment) === null);
@@ -216,6 +223,7 @@ console.log("index.js");
 	check("registers on-this-day", typeof plugin._blocks["on-this-day"] === "function");
 	check("registers the Chinese alias", typeof plugin._blocks["往年今日"] === "function");
 	check("registers the insert command", plugin._commands.some((c) => c.id === "insert-block"));
+	check("settings are searchable in Obsidian 1.13+", plugin._tab.getSettingDefinitions().length === 3);
 
 	const host = document.getElementById("host");
 	function mount(sourcePath) {
@@ -237,6 +245,13 @@ console.log("index.js");
 	check("weekly notes and clippings are not cards", !today.el.textContent.includes("W05"));
 	check("cards start folded", cards().every((c) => !c.open));
 	check("nothing is read or rendered before a card opens", renders.length === 0);
+
+	// A date-named attachment can be created while Obsidian is running. It must
+	// never enter the daily-note index or be read as Markdown (RIFF/WEBP gibberish).
+	const sameDateImage = new TFile("10-LIFE/2025/10月/2025-10-07.webp");
+	trigger("create", sameDateImage);
+	await wait(650);
+	check("a newly created date-named WebP does not add a duplicate card", cards().length === 4, "got " + cards().length);
 
 	// open the first card
 	const first = cards()[0];

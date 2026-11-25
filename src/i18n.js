@@ -44,7 +44,7 @@ function pickLocale() {
 	let lang = "en";
 	try {
 		lang = typeof obsidian.getLanguage === "function" ? obsidian.getLanguage() : obsidian.moment.locale();
-	} catch (e) {
+	} catch {
 		lang = "en";
 	}
 	return String(lang || "en").toLowerCase().startsWith("zh") ? "zh" : "en";

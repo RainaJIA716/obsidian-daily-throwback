@@ -112,7 +112,7 @@ class ThrowbackBlock extends MarkdownRenderChild {
 
   onunload() {
     this.plugin.blocks.delete(this);
-    for (const id of this.timers.values()) clearTimeout(id);
+    for (const id of this.timers.values()) window.clearTimeout(id);
     this.timers.clear();
   }
 
@@ -240,8 +240,8 @@ class ThrowbackBlock extends MarkdownRenderChild {
   }
 
   schedule(id, fn) {
-    clearTimeout(this.timers.get(id));
-    this.timers.set(id, setTimeout(() => { this.timers.delete(id); fn(); }, REFRESH_MS));
+    window.clearTimeout(this.timers.get(id));
+    this.timers.set(id, window.setTimeout(() => { this.timers.delete(id); fn(); }, REFRESH_MS));
   }
 }
 
@@ -249,6 +249,37 @@ class ThrowbackSettingTab extends PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
+  }
+
+  // Obsidian 1.13+ uses these definitions for settings search and rendering.
+  // Older supported versions ignore this method and keep using display().
+  getSettingDefinitions() {
+    return [
+      {
+        name: t.formatName,
+        desc: t.formatDesc,
+        control: { type: 'text', key: 'format', placeholder: DEFAULTS.format },
+      },
+      {
+        name: t.folderName,
+        desc: t.folderDesc,
+        control: { type: 'text', key: 'folder', placeholder: '10-LIFE' },
+      },
+      {
+        name: t.expandName,
+        desc: t.expandDesc,
+        control: { type: 'toggle', key: 'expandFirst' },
+      },
+    ];
+  }
+
+  async setControlValue(key, value) {
+    const s = this.plugin.settings;
+    if (key === 'format' && typeof value === 'string') s.format = value.trim() || DEFAULTS.format;
+    else if (key === 'folder' && typeof value === 'string') s.folder = value.trim();
+    else if (key === 'expandFirst' && typeof value === 'boolean') s.expandFirst = value;
+    else return;
+    await this.plugin.saveSettings();
   }
 
   display() {

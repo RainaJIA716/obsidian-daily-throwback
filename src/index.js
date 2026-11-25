@@ -1,7 +1,7 @@
 'use strict';
 // Pure logic: which notes are daily notes, which ones share today's month-day,
 // and what part of an old note gets shown. No DOM, no Obsidian objects beyond
-// plain { path, basename } — so the harness can drive it directly.
+// plain { path, basename, extension } — so the harness can drive it directly.
 
 // Code block names this plugin answers to. The first one is what the insert
 // command writes; the Chinese one is an alias for people who prefer it.
@@ -35,7 +35,11 @@ function basenameFormat(format) {
 // Returns { year, key: "MM-DD", date } or null. Strict parsing, so weekly
 // notes like "2026-01-W05" and clippings like "20231101标题" don't count.
 function parseDaily(file, settings, moment) {
-  if (!file || !file.basename || !inFolder(file.path, settings.folder)) return null;
+  // Startup uses vault.getMarkdownFiles(), but live create/rename events contain
+  // every TFile. Without this check, an attachment such as 2025-06-25.webp is
+  // indexed beside 2025-06-25.md and later rendered as binary gibberish.
+  if (!file || String(file.extension || '').toLowerCase() !== 'md'
+    || !file.basename || !inFolder(file.path, settings.folder)) return null;
   const date = moment(file.basename, basenameFormat(settings.format), true);
   if (!date.isValid()) return null;
   return { year: date.year(), key: date.format('MM-DD'), date };
